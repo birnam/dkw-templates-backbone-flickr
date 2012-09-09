@@ -1,0 +1,117 @@
+.box-shadow(@style, @c) when (iscolor(@c)) {
+    box-shadow:         @style @c;
+    -webkit-box-shadow: @style @c;
+    -moz-box-shadow:    @style @c;
+    -o-box-shadow:      @style @c;
+    -ms-box-shadow:     @style @c;
+}
+.box-shadow(@style, @alpha: 50%) when (isnumber(@alpha)) {
+    .box-shadow(@style, rgba(0, 0, 0, @alpha));
+}
+.multi-box-shadow(...) {
+    box-shadow:         @arguments;
+    -webkit-box-shadow: @arguments;
+    -moz-box-shadow:    @arguments;
+    -o-box-shadow:      @arguments;
+    -ms-box-shadow:     @arguments;
+}
+.no-box-shadow() {
+    box-shadow:         none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow:    none;
+    -o-box-shadow:      none;
+    -ms-box-shadow:     none;
+}
+
+.border-radius(@r) {
+    border-radius:          @r;
+    -moz-border-radius:     @r;
+    -webkit-border-radius:  @r;
+}
+
+.ellipsis() {
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    -moz-text-overflow: ellipsis;
+    -webkit-text-overflow: ellipsis;
+}
+
+.chrome-scroller(@scrollwidth: 5px, @scrollbackgroundcolor: #fff, @scrollborder: 1px black solid, @thumbborderradius: 2px, @thumbbackgroundcolor: rgba(0, 0, 0, 0.5), @thumbshadow: 0 0 1px rgba(255,255,255,.5)) {
+    &::-webkit-scrollbar {
+        -webkit-appearance: none;
+        width: @scrollwidth;
+        background-color: @scrollbackgroundcolor;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: @thumbborderradius;
+        background-color: @thumbbackgroundcolor;
+        -webkit-box-shadow: @thumbshadow;
+    }
+}
+
+.vertical-gradient (@top, @bottom) {
+    /* http://www.colorzilla.com/gradient-editor/ */
+    background: @top;
+    background: -moz-linear-gradient(top,  @top 0%, @bottom 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@top), color-stop(100%,@bottom));
+    background: -webkit-linear-gradient(top,  @top 0%,@bottom 100%);
+    background: -o-linear-gradient(top,  @top 0%,@bottom 100%);
+    background: -ms-linear-gradient(top,  @top 0%,@bottom 100%);
+    background: linear-gradient(top,  @top 0%,@bottom 100%);
+}
+
+.placeholder-text (@color: #999, @weight: inherit, @size: 100%, @font: inherit) {
+    &::-webkit-input-placeholder  {
+        color: @color;
+        font-family: @font;
+        font-size: @size;
+        font-weight: @weight;
+    }
+    &:-moz-placeholder {
+        color: @color;
+        font-family: @font;
+        font-size: @size;
+        font-weight: @weight;
+    }
+}
+
+.box(@orient: horizontal, @horiz: start, @vert: start) {
+    display:-moz-box;
+    -moz-box-orient:@orient;
+    -moz-box-pack:@horiz;
+    -moz-box-align:@vert;
+
+    display:-webkit-box;
+    -webkit-box-orient:@orient;
+    -webkit-box-pack:@horiz;
+    -webkit-box-align:@vert;
+
+    display:box;
+    box-orient:@orient;
+    box-pack:@horiz;
+    box-align:@vert;
+}
+
+.box-flex(@value: 1.0) {
+    -moz-box-flex: @value;
+    -webkit-box-flex: @value;
+    box-flex: @value;
+}
+
+.unselectable() {
+   -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+}
+
+.columns(@colnumber : 2, @colgap : 30px) {
+    -moz-column-count: @colnumber;
+    -moz-column-gap: @colgap;
+    -webkit-column-count: @colnumber;
+    -webkit-column-gap: @colgap;
+    column-count: @colnumber;
+    column-gap: @colgap;
+}
