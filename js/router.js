@@ -1,15 +1,22 @@
 define([
     'jquery',
     'underscore',
-    'backbone'
+    'backbone',
+
+    'tester'
 ], function(
     $,
     _,
-    Backbone
+    Backbone,
+
+    Tester
     ){
 
     var AppRouter = Backbone.Router.extend({
         routes: {
+            // Load Jasmine tests
+            'test': 'test',
+
             // Define some URL routes
             'red.html': 'showRed',
             'green.html': 'showGreen',
@@ -17,6 +24,11 @@ define([
 
             // Default
             '*actions': 'defaultAction'
+        },
+
+        test: function() {
+            this.tester = new Tester();
+            this.tester.run();
         },
 
         showRed: function(){

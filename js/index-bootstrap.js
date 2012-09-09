@@ -7,7 +7,10 @@ require.config({
         scrollto: 'libs/jquery/plugins/scrollto/jquery.scrollto',
         json: 'libs/JSON-js/json2',
         mustache: 'libs/mustache/mustache',
+        jasmine: 'libs/jasmine/jasmine',
+        'jasmine-html': 'libs/jasmine/jasmine-html',
         broadcast: 'util/broadcast',
+        tester: 'util/tester',
         app: 'applications/app'
     },
     shim: {
@@ -34,6 +37,20 @@ require.config({
 
         'json': {
             exports: 'JSON'
+        },
+
+        'jasmine': {},
+
+        'jasmine-html': {
+            deps: ['jasmine']
+        },
+
+        'tests/testingtests': {
+            deps: ['jasmine', 'jasmine-html']
+        },
+
+        'tests/body-elements': {
+            deps: ['jasmine', 'jasmine-html']
         }
     },
 
