@@ -89,20 +89,29 @@ blockquote:after {
 body {
   color: #333333;
 }
-section {
-  width: 100%;
-  height: 700px;
-}
-section#red {
-  background: red;
-}
-section#green {
-  background: green;
-}
-section#blue {
-  background: blue;
-}
 header {
   position: fixed;
-  background: white;
+  background: rgba(255, 255, 255, 0.8);
+  font: normal bold 14px Helvetica, Arial, sans-serif;
+}
+header a {
+  text-decoration: none;
+  color: #663333;
+  display: inline-block;
+  padding: 4px 8px;
+}
+header a:hover {
+  color: #bb7777;
+}
+#main {
+  padding-top: 40px;
+}
+#main li {
+  float: left;
+  height: 108px;
+  width: 108px;
+  padding: 4px;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
 }

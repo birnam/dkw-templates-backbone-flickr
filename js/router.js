@@ -3,48 +3,59 @@ define([
     'underscore',
     'backbone',
 
-    'tester'
+    'broadcast'
 ], function(
     $,
     _,
     Backbone,
 
-    Tester
+    Broadcast
     ){
 
     var AppRouter = Backbone.Router.extend({
-        routes: {
-            // Load Jasmine tests
-            'test': 'test',
 
+
+        initialize : function() {
+            this.broadcast = Broadcast.getInstance();
+        },
+
+        routes: {
             // Define some URL routes
-            'red.html': 'showRed',
-            'green.html': 'showGreen',
-            'blue.html': 'showBlue',
+            'interesting.html': 'showInteresting',
+            'parkway.html': 'showParkway',
+            'woodturning.html': 'showWoodTurning',
+            'hummingbirds.html': 'showHummingbirds',
+            'nebula.html': 'showNebula',
+
+            // id
+            'photo/:id': 'showPhoto',
 
             // Default
-            '*actions': 'defaultAction'
+            '*actions': 'showInteresting'
         },
 
-        test: function() {
-            this.tester = new Tester();
-            this.tester.run();
+        showInteresting: function(){
+            this.broadcast.trigger("flickr:interesting");
         },
 
-        showRed: function(){
-            $("#red").ScrollTo();
+        showParkway: function() {
+            this.broadcast.trigger("flickr:search", "blue ridge parkway");
         },
 
-        showGreen: function(){
-            $("#green").ScrollTo();
+        showWoodTurning: function() {
+            this.broadcast.trigger("flickr:search", "wood turning");
         },
 
-        showBlue: function(){
-            $("#blue").ScrollTo();
+        showHummingbirds: function() {
+            this.broadcast.trigger("flickr:search", "hummingbird");
         },
 
-        defaultAction: function(action){
-            $("body").ScrollTo();
+        showNebula: function() {
+            this.broadcast.trigger("flickr:search", "nebula");
+        },
+
+        showPhoto: function(photo_id) {
+            this.broadcast.trigger("flickr:photo", photo_id);
         }
     });
 

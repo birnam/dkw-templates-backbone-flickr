@@ -35,17 +35,19 @@ define([
         },
 
         defaults : {
+            showSeparator: true
         },
 
         initialize : function() {
             AbstractView.prototype.initialize.apply(this, _.rest(arguments));
 
-            if (this.model) {
-                this.$el.html(Mustache.render(Template, this.model.toJSON()));
-            }
+            this.render();
         },
 
         render : function() {
+            if (this.model) {
+                this.$el.html(Mustache.render(Template, _.extend({}, this.model.toJSON(), {showSeparator: this.options.showSeparator})));
+            }
             return this;
         },
 

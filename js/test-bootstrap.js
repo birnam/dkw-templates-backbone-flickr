@@ -10,8 +10,7 @@ require.config({
         jasmine: 'libs/jasmine/jasmine',
         'jasmine-html': 'libs/jasmine/jasmine-html',
         broadcast: 'util/broadcast',
-        tester: 'util/tester',
-        app: 'applications/app'
+        tester: 'util/tester'
     },
     shim: {
         'jquery': {
@@ -59,22 +58,16 @@ require.config({
 });
 
 require([
-    'app',
 
-    'domReady',
-
-    'history',
-    'scrollto',
-
-    'json'
+        'tester'
 
 ], function(
 
-    App,
-    DomReady
+        Tester
 
     ){
-    DomReady(function() {
-        App.initialize();
-    });
+
+    var tester = new Tester();
+    tester.run();
+
 })

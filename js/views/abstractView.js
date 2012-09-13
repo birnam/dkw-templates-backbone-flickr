@@ -22,6 +22,25 @@ define([
 
             this.broadcast.super(this._broadcasted, this);
 
+            if (_.isFunction(this.render)) {
+                if (this.collection) {
+                    this.collection.on("change", this.render, this);
+                } else if (this.model) {
+                    this.model.on("change", this.render, this);
+                }
+            }
+
+            if (_.isFunction(this.render)) {
+                if (this.model) {
+                    this.model.on("change", this.render, this);
+                } else if (this.collection) {
+                    this.collection.on("change", this.render, this);
+                    this.collection.on("add", this.render, this);
+                    this.collection.on("remove", this.render, this);
+                    this.collection.on("reset", this.render, this);
+                }
+            }
+
         },
 
         _broadcast : function(event) {

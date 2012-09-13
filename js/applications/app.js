@@ -28,10 +28,11 @@ define([
 
     var initialize = function() {
         var navitems = new MenuItemCollection([
-            new MenuItemModel({ title: 'home', link: '/' }),
-            new MenuItemModel({ title: 'rrr', link: '/red.html' }),
-            new MenuItemModel({ title: 'ggg', link: '/green.html' }),
-            new MenuItemModel({ title: 'bbb', link: '/blue.html' })
+            new MenuItemModel({ title: 'Interesting', link: '/interesting.html' }),
+            new MenuItemModel({ title: 'Blue Ridge Parkway', link: '/parkway.html' }),
+            new MenuItemModel({ title: 'Wood Turning', link: '/woodturning.html' }),
+            new MenuItemModel({ title: 'Hummingbirds', link: '/hummingbirds.html' }),
+            new MenuItemModel({ title: 'Nebula', link: '/nebula.html' })
         ]);
 
         this.home = new HomeView({el: $("#main"), navitems: navitems});

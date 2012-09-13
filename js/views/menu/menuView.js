@@ -5,7 +5,7 @@ define([
     'backbone',
 
     'views/abstractView',
-    'views/menuItemView'
+    'views/menu/menuItemView'
 
 ], function (
     $,
@@ -22,7 +22,6 @@ define([
         tagName : "nav",
 
         events : {
-            'section:color' : '_sectionClick'
         },
 
         initialize : function() {
@@ -40,17 +39,12 @@ define([
                 var lastone = this.collection.at(this.collection.length - 1);
 
                 this.collection.each(function(menuItem, key) {
-                    menuItem.set("showSeparator", (menuItem.cid != lastone.cid));
-                    var item = new MenuItemView({model: menuItem});
+                    var item = new MenuItemView({model: menuItem, showSeparator: (menuItem != lastone)});
                     this.$el.append(item.$el);
                 }, this);
             }
 
             return this;
-        },
-
-        _sectionClick : function(event, args) {
-            console.log(event, args);
         }
 
     });

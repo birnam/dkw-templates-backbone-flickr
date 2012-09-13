@@ -1,11 +1,19 @@
 define([
 
-    'jasmine',
-    'jasmine-html',
+        'jquery',
+        'underscore',
+        'backbone',
 
-    'tests/body-elements'
+        'jasmine',
+        'jasmine-html',
+
+        'tests/body-elements'
 
 ], function (
+
+        $,
+        _,
+        Backbone
 
 ) {
 
@@ -28,7 +36,6 @@ define([
         }
 
     };
-
     return Tester;
 
 });

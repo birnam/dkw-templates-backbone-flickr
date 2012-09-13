@@ -16,8 +16,7 @@ define([
 
         defaults: {
             title: "",
-            link: "",
-            showSeparator: true
+            link: ""
         },
 
         initialize: function() {
