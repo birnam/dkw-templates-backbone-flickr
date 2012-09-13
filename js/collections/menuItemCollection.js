@@ -4,7 +4,7 @@ define([
     'underscore',
     'backbone',
 
-    'models/MenuItemModel'
+    'models/menuItemModel'
 
 ], function (
 
